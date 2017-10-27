@@ -181,10 +181,6 @@
   dependencies:
     "@angular-devkit/core" "0.0.20"
 
-"@swimlane/ngx-charts@^6.1.0":
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/@swimlane/ngx-charts/-/ngx-charts-6.1.0.tgz#63feaa27389eaf730ea446012face6a4a7aa966d"
-
 "@types/jasmine@*":
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-2.6.0.tgz#997b41a27752b4850af2683bc4a8d8222c25bd02"
