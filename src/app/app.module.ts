@@ -5,7 +5,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent, AppResultsComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 @NgModule({
   declarations: [
@@ -16,8 +15,6 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    NgbModule.forRoot(),
-    NgxChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
