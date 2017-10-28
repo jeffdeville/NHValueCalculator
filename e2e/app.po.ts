@@ -22,8 +22,13 @@ export class AppPage {
       .sendKeys(Key.LEFT);
   }
 
-  changePatientValue() {
-    element(by.css('#patient-value'))
+  changeVisitValue() {
+    element(by.css('#visit-value'))
+      .sendKeys(Key.RIGHT);
+  }
+
+  changeNumVisits() {
+    element(by.css('#num-visits'))
       .sendKeys(Key.RIGHT);
   }
 

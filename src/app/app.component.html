@@ -4,12 +4,22 @@
       <h2 class="text-center mb-5">Calculator</h2>
       <div class="row">
         <div class="col-12 col-md-6">
-          <h2>Patient LTV</h2>
-          <p class="lead">(Avg Revenue / Visit) x (Avg Number of Visits / Patient) </p>
+          <h2>Average Visit Value</h2>
+          <p class="lead">How much do you make on an average patient visit?</p>
         </div>
         <div class="col-12 col-md-6">
-          <input type="range" name="patient-value" id="patient-value" placeholder="300" [(ngModel)]="patientValue" min="100" max="3000" step="100">
-          <p class="h4 text-center">{{ patientValue | currency:'USD':true }}</p>
+          <input type="range" name="visit-value" id="visit-value" placeholder="200" [(ngModel)]="visitValue" min="100" max="500" step="10">
+          <p class="h4 text-center">{{ visitValue | currency:'USD':true }}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <h2>Average Num Visits Per Patient</h2>
+          <p class="lead">How many times do you see most patients?</p>
+        </div>
+        <div class="col-12 col-md-6">
+          <input type="range" name="num-visits" id="num-visits" placeholder="4" [(ngModel)]="numVisits" min="1" max="20" step="1">
+          <p class="h4 text-center">{{ numVisits }} Visits</p>
         </div>
       </div>
       <div class="row">
@@ -34,7 +44,7 @@
       </div>
     </div>
     <div class="col-6 col-md-4">
-      <app-results [patientValue]="patientValue" [startingPatients]="startingPatients" [desiredPatients]="desiredPatients"></app-results>
+      <app-results [visitValue]="visitValue" [numVisits]="numVisits" [startingPatients]="startingPatients" [desiredPatients]="desiredPatients"></app-results>
     </div>
   </div>
 </div>

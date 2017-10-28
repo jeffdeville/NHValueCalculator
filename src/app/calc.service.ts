@@ -9,11 +9,12 @@ export class CalcService {
     this.organicGrowthRate = organicGrowthRate;
   }
 
-  compute(patientValue: number,
+  compute(visitValue: number,
+          numVisits: number,
           startingPatients: number,
           desiredPatients: number): any {
-    this.assertValidInputs(patientValue, startingPatients, desiredPatients, this.organicGrowthRate);
-
+    this.assertValidInputs(visitValue, numVisits, startingPatients, desiredPatients, this.organicGrowthRate);
+    const patientValue    = visitValue * numVisits;
     const withoutNH     = this.calcRange(startingPatients, desiredPatients, this.organicGrowthRate);
     const withNH        = this.calcRange(startingPatients, desiredPatients, (this.nhGrowthRate + this.organicGrowthRate));
     const deltaPatients = this.monthRange.map((i: number): number => withNH[i] - withoutNH[i]);
@@ -48,12 +49,17 @@ export class CalcService {
     }, []);
   }
 
-  private assertValidInputs(patientValue: number,
+  private assertValidInputs(visitValue: number,
+                            numVisits: number,
                             startingPatients: number,
                             desiredPatients: number,
                             growthRate: number): void {
-    if (100 > patientValue || patientValue > 10000) {
-      throw new Error('InvalidPatientValue - Must be between 100 - 10000');
+    if (100 > visitValue) {
+      throw new Error('InvalidVisitValue - Must be greater than $100');
+    }
+
+    if (1 > numVisits) {
+      throw new Error('InvalidNumVisits - Must be at least 1!');
     }
 
     if (startingPatients < 0) {

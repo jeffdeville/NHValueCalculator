@@ -9,7 +9,7 @@ describe('angular-widget App', () => {
 
   it('should display the initial default calculations, and update them when a slider is moved', () => {
     page.navigateTo();
-    expect(page.getMoney()).toEqual('$78,000');
+    expect(page.getMoney()).toEqual('$156,000');
     expect(page.getTime()).toEqual('21 Months');
     expect(page.getPatients()).toEqual('260 Patients');
   });
@@ -30,9 +30,17 @@ describe('angular-widget App', () => {
     expect(page.getPatients()).not.toEqual('260 Patients');
   });
 
-  it('should update the calculations altering PatientValue', () => {
+  it('should update the calculations altering VisitValue', () => {
     page.navigateTo();
-    page.changePatientValue();
+    page.changeVisitValue();
+    expect(page.getMoney()).not.toEqual('$78,000');
+    expect(page.getTime()).toEqual('21 Months');
+    expect(page.getPatients()).toEqual('260 Patients');
+  });
+
+  it('should update the calculations altering NumVisits', () => {
+    page.navigateTo();
+    page.changeNumVisits();
     expect(page.getMoney()).not.toEqual('$78,000');
     expect(page.getTime()).toEqual('21 Months');
     expect(page.getPatients()).toEqual('260 Patients');

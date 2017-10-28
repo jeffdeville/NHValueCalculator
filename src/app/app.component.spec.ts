@@ -19,22 +19,22 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
-  it(`should have patientValue as 300`, async(() => {
+  it(`should have visitValue as 200`, async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.patientValue).toEqual(300);
+    expect(app.visitValue).toEqual(200);
 
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
 
-    expect(compiled.querySelector('#money').textContent).toEqual('$78,000');
+    expect(compiled.querySelector('#money').textContent).toEqual('$156,000');
     expect(compiled.querySelector('#time').textContent).toEqual('21 Months');
     expect(compiled.querySelector('#patients').textContent).toEqual('260 Patients');
 
-    app.patientValue = 500;
+    app.visitValue = 500;
     fixture.detectChanges();
 
-    expect(compiled.querySelector('#money').textContent).toEqual('$130,000');
+    expect(compiled.querySelector('#money').textContent).toEqual('$390,000');
     expect(compiled.querySelector('#time').textContent).toEqual('21 Months');
     expect(compiled.querySelector('#patients').textContent).toEqual('260 Patients');
   }));
