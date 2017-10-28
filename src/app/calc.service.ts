@@ -1,20 +1,21 @@
 export class CalcService {
   monthRange: Array<number>;
   nhGrowthRate: number;
+  organicGrowthRate: number;
 
-  constructor(nhGrowthRate = 5, numMonths = 36) {
+  constructor(nhGrowthRate = 5, numMonths = 36, organicGrowthRate = 1) {
     this.nhGrowthRate = nhGrowthRate;
     this.monthRange = Array.from(new Array(36), (val, index) => index);
+    this.organicGrowthRate = organicGrowthRate;
   }
 
   compute(patientValue: number,
           startingPatients: number,
-          desiredPatients: number,
-          growthRate: number): any {
-    this.assertValidInputs(patientValue, startingPatients, desiredPatients, growthRate);
+          desiredPatients: number): any {
+    this.assertValidInputs(patientValue, startingPatients, desiredPatients, this.organicGrowthRate);
 
-    const withoutNH     = this.calcRange(startingPatients, desiredPatients, growthRate);
-    const withNH        = this.calcRange(startingPatients, desiredPatients, (this.nhGrowthRate + growthRate));
+    const withoutNH     = this.calcRange(startingPatients, desiredPatients, this.organicGrowthRate);
+    const withNH        = this.calcRange(startingPatients, desiredPatients, (this.nhGrowthRate + this.organicGrowthRate));
     const deltaPatients = this.monthRange.map((i: number): number => withNH[i] - withoutNH[i]);
 
     const money = deltaPatients.reduce(
@@ -25,9 +26,9 @@ export class CalcService {
       (acc: number, numPatients: number): number => acc + numPatients
     , 0);
 
-    const timeToBookedOutWith = (desiredPatients - startingPatients) / (growthRate + this.nhGrowthRate);
-    const timeToBookedOutWithOut = (desiredPatients - startingPatients) / (growthRate);
-    const time = timeToBookedOutWithOut === Infinity ? 60 : Math.round(timeToBookedOutWithOut - timeToBookedOutWith);
+    const timeToBookedOutWith = (desiredPatients - startingPatients) / (this.organicGrowthRate + this.nhGrowthRate);
+    const timeToBookedOutWithOut = (desiredPatients - startingPatients) / (this.organicGrowthRate);
+    const time = Math.round(timeToBookedOutWithOut - timeToBookedOutWith);
 
     return {
       money: money,

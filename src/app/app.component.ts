@@ -5,12 +5,12 @@ import { CalcService } from './calc.service';
 
 @Component({
   selector: 'app-results',
-  templateUrl: './app-results.component.html'
+  templateUrl: './app-results.component.html',
+  styleUrls: ['./app-results.component.css']
 })
 export class AppResultsComponent implements OnChanges {
   @Input() patientValue: number;
   @Input() startingPatients: number;
-  @Input() growthRate: number;
   @Input() desiredPatients: number;
   money: number;
   patients: number;
@@ -18,7 +18,7 @@ export class AppResultsComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     const result = new CalcService().compute(
-      this.patientValue, this.startingPatients, this.desiredPatients, this.growthRate
+      this.patientValue, this.startingPatients, this.desiredPatients
     );
     this.money = result.money;
     this.patients = result.patients;

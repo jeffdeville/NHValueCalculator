@@ -31,9 +31,4 @@ export class AppPage {
     element(by.css('#starting-patients'))
       .sendKeys(Key.RIGHT);
   }
-
-  changeGrowthRate() {
-    element(by.css('#growth-rate'))
-      .sendKeys(Key.RIGHT);
-  }
 }

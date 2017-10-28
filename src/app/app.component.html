@@ -1,50 +1,40 @@
 <div class="container-fluid mb-5 bg-light pt-3">
-    <div class="row mb-3">
-        <div class="col-12 col-md-8">
-            <h2 class="text-center mb-5">Calculator</h2>
-            <div class="row">
-                <div class="col-12 col-md-6">
-                    <h2>Patient LTV</h2>
-                    <p class="lead">(Avg Revenue / Visit) x (Avg Number of Visits / Patient) </p>
-                </div>
-                <div class="col-12 col-md-6">
-                    <input type="range" name="patient-value" id="patient-value" placeholder="300" [(ngModel)]="patientValue" min="150" max="2000">
-                    <p class="h4 text-center">{{ patientValue | currency:'USD':true }}</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12 col-md-6">
-                    <h2>Patients Per Week</h2>
-                    <p class="lead">How many patients do you see currently on an average week</p>
-                </div>
-                <div class="col-12 col-md-6">
-                    <input type="range" name="starting-patients" id="starting-patients" placeholder="300" [(ngModel)]="startingPatients" min="0" max="30" step="1">
-                    <p class="h4 text-center">{{ startingPatients }}</p>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-12 col-md-6">
-                    <h2>Goal Patients Per Week</h2>
-                    <p class="lead">How many patients do you WANT to see each week?</p>
-                </div>
-                <div class="col-12 col-md-6">
-                    <input type="range" name="desired-patients" id="desired-patients" placeholder="300" [(ngModel)]="desiredPatients" min="10" max="30" step="1">
-                    <p class="h4 text-center">{{ desiredPatients }}</p>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-12 col-md-6">
-                    <h2>Growth Rate</h2>
-                    <p class="lead">If today you see 10 patients/wk, and a month ago you saw 9, then your current growth rate is 1.</p>
-                </div>
-                <div class="col-12 col-md-6">
-                    <input type="range" name="growth-rate" id="growth-rate" placeholder="300" [(ngModel)]="growthRate" min="0" max="10" step="0.5">
-                    <p class="h4 text-center">{{ growthRate }}</p>
-                </div>
-            </div>
+  <div class="row mb-3">
+    <div class="col-6 col-md-8">
+      <h2 class="text-center mb-5">Calculator</h2>
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <h2>Patient LTV</h2>
+          <p class="lead">(Avg Revenue / Visit) x (Avg Number of Visits / Patient) </p>
         </div>
-        <div class="col-md-4">
-            <app-results [patientValue]="patientValue" [startingPatients]="startingPatients" [growthRate]="growthRate" [desiredPatients]="desiredPatients"></app-results>
+        <div class="col-12 col-md-6">
+          <input type="range" name="patient-value" id="patient-value" placeholder="300" [(ngModel)]="patientValue" min="100" max="3000" step="100">
+          <p class="h4 text-center">{{ patientValue | currency:'USD':true }}</p>
         </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <h2>Patients Per Week</h2>
+          <p class="lead">How many patients do you see currently on an average week</p>
+        </div>
+        <div class="col-12 col-md-6">
+          <input type="range" name="starting-patients" id="starting-patients" placeholder="300" [(ngModel)]="startingPatients" min="0" max="30" step="1">
+          <p class="h4 text-center">{{ startingPatients }}</p>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-12 col-md-6">
+          <h2>Goal Patients Per Week</h2>
+          <p class="lead">How many patients do you WANT to see each week?</p>
+        </div>
+        <div class="col-12 col-md-6">
+          <input type="range" name="desired-patients" id="desired-patients" placeholder="300" [(ngModel)]="desiredPatients" min="10" max="30" step="1">
+          <p class="h4 text-center">{{ desiredPatients }}</p>
+        </div>
+      </div>
     </div>
+    <div class="col-6 col-md-4">
+      <app-results [patientValue]="patientValue" [startingPatients]="startingPatients" [desiredPatients]="desiredPatients"></app-results>
+    </div>
+  </div>
 </div>

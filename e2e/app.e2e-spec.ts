@@ -37,12 +37,4 @@ describe('angular-widget App', () => {
     expect(page.getTime()).toEqual('21 Months');
     expect(page.getPatients()).toEqual('260 Patients');
   });
-
-  it('should update the calculations altering GrowthRate', () => {
-    page.navigateTo();
-    page.changeGrowthRate();
-    expect(page.getMoney()).not.toEqual('$78,000');
-    expect(page.getTime()).not.toEqual('21 Months');
-    expect(page.getPatients()).not.toEqual('260 Patients');
-  });
 });
